@@ -1,0 +1,2 @@
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_ClassLibrary\obj\Debug\labWork_№1_ClassLibrary.csprojAssemblyReference.cache
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_ClassLibrary\obj\Debug\labWork_№1_ClassLibrary.csproj.CoreCompileInputs.cache

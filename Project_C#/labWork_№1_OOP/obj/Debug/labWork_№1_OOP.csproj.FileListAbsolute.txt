@@ -1,0 +1,13 @@
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_OOP\obj\Debug\labWork_№1_OOP.csprojAssemblyReference.cache
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_OOP\obj\Debug\labWork_№1_OOP.csproj.CoreCompileInputs.cache
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_OOP\bin\Debug\labWork_№1_OOP.exe.config
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_OOP\bin\Debug\labWork_№1_OOP.exe
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_OOP\bin\Debug\labWork_№1_OOP.pdb
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_OOP\bin\Debug\LabWork_№1_ClassLib.dll
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_OOP\bin\Debug\LabWork_№1_ClassLib.pdb
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_OOP\obj\Debug\labWork_№1_OOP.csproj.CopyComplete
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_OOP\obj\Debug\labWork_№1_OOP.exe
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\Калентьев (Основы ООП)\Лабораторные работы ООП\Проекты л.р. C# ООП\labWork_№1_OOP\obj\Debug\labWork_№1_OOP.pdb
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\EvtAnton\Проекты л.р. C# ООП\labWork_№1_OOP\obj\Debug\labWork_№1_OOP.csprojAssemblyReference.cache
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\EvtAnton\Проекты л.р. C# ООП\labWork_№1_OOP\obj\Debug\labWork_№1_OOP.exe
+C:\Users\Максим Евтушенко\Google Диск\Магистратура ТПУ\2 курс 4 семестр\EvtAnton\Проекты л.р. C# ООП\labWork_№1_OOP\obj\Debug\labWork_№1_OOP.pdb
