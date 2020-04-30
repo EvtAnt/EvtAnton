@@ -1,2 +1,0 @@
-# EvtAnton
-My favourite repository!!!
