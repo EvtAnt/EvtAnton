@@ -12,32 +12,33 @@ using System.Reflection;
 
 namespace FuelCalculationView
 {
+    /// <summary>
+    /// Класс, описывающий форму "AddVehicleForm"
+    /// </summary>
     public partial class AddVehicleForm : Form
     {
-        public AddVehicleForm()
+        /// <summary>
+        /// Конструктор класса "AddVehicleForm"
+        /// </summary>
+        /// <param name="vehicleList">Текущий список ТС</param>
+        public AddVehicleForm(BindingList<VehiclesBase> vehicleList)
         {
             InitializeComponent();
 
             // Внесение в Combobox всех типов ТС из "enum VehiclesTypes"
             var vehicleTypes = Enum.GetNames(typeof(VehiclesTypes));
-            for(int i = 0; i < vehicleTypes.Length; i++)
-                comboBoxTypesOfVehicle.Items.Add(vehicleTypes[i]);           
+            for (int i = 0; i < vehicleTypes.Length; i++)
+            { 
+                comboBoxTypesOfVehicle.Items.Add(vehicleTypes[i]);
+            }
+                
+            _totalVehicleList = vehicleList;
         }
 
         /// <summary>
         /// Полный список ТС
         /// </summary>
-        private List<VehiclesBase> _totalVehicleList;
-
-        /// <summary>
-        /// Конструктор с ссылкой на главную форму и полный список ТС
-        /// </summary>
-        /// <param name="totalVehicleList"></param>
-        public AddVehicleForm(List<VehiclesBase> totalVehicleList)
-            : this()
-        {
-            _totalVehicleList = totalVehicleList;
-        }
+        private BindingList<VehiclesBase> _totalVehicleList;
 
         /// <summary>
         /// Добавление транспортного средства в DataGridView
@@ -46,14 +47,27 @@ namespace FuelCalculationView
         /// <param name="e"></param>
         private void OK_Click(object sender, EventArgs e)
         {
-            _totalVehicleList.Add(
-                CreateVehicleByString(
-                    comboBoxTypesOfVehicle.Text, 
-                    textBoxNamesOfVehicle.Text, 
-                    textBoxWeightOfVehicle.Text));
+            try
+            {
+                if (!string.IsNullOrEmpty(comboBoxTypesOfVehicle.Text))
+                {
+                    _totalVehicleList.Add(
+                    CreateVehicleByString(
+                        comboBoxTypesOfVehicle.Text,
+                        CheckNameVehicle(textBoxNamesOfVehicle.Text),
+                        textBoxWeightOfVehicle.Text));
 
-
-            this.Close();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Не указан тип ТС!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /// <summary>
@@ -65,41 +79,50 @@ namespace FuelCalculationView
         /// <returns></returns>
         public static VehiclesBase CreateVehicleByString(string type, string name, string weight)
         {
-            Type typeClass = null;
-
             switch (type)
             {
                 case nameof(Car):
-                    {
-                        //typeClass = typeof(Car);
-                        Car car = new Car();
-                        car.Name = name;
-                        car.Weight = Convert.ToDouble(weight);
-                        return car;
-                        break;
-                    }
-                //case nameof(HybridCar):
-                //    {
-                //        //typeClass = typeof(HybridCar);
-                //        break;
-                //    }
-                //case nameof(Helicopter):
-                //    {
-                //        //typeClass = typeof(Helicopter);
-                //        break;
-                //    }
+                {
+                    var car = new Car();
+                    AddNameAndWeightVehicle(car, name, weight);
+                    return car;
+                }
+                case nameof(HybridCar):
+                {
+                    var hybridCar = new HybridCar();
+                    AddNameAndWeightVehicle(hybridCar, name, weight);
+                    return hybridCar;
+                }
+                case nameof(Helicopter):
+                {
+                    var helicopter = new Helicopter();
+                    AddNameAndWeightVehicle(helicopter, name, weight);
+                    return helicopter;
+                }
                 default:
-                    {
-                        throw new Exception("Не указан тип ТС!");
-                    }
+                {
+                    throw new Exception("Не указан тип ТС!");
+                }
             }
+        }
 
-            //VehiclesBase veh = new VehiclesBase();
-
-            //ConstructorInfo paramCons = typeClass.GetConstructor(
-            //    new Type[] { typeof(string), typeof(double) });
-            //
-            //return (VehiclesBase)paramCons.Invoke(new object[] { name, Convert.ToDouble(weight) });
+        /// <summary>
+        /// Добавление имени и массы ТС с проверкой заполнения
+        /// текстовых полей в форме.
+        /// </summary>
+        /// <param name="vehicle">Транспортное средство</param>
+        /// <param name="name">Имя ТС</param>
+        /// <param name="weight">Масса ТС</param>
+        private static void AddNameAndWeightVehicle(
+            VehiclesBase vehicle, 
+            string name, 
+            string weight)
+        {
+            vehicle.Name = name;
+            vehicle.Weight = (!string.IsNullOrEmpty(weight)) ? 
+                Convert.ToDouble(weight) :
+                throw new ArgumentException(
+                    "Ошибка: Не указана масса ТС!");
         }
 
         /// <summary>
@@ -119,7 +142,7 @@ namespace FuelCalculationView
         /// <param name="e"></param>
         private void vehicleWeight_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char _enteredChar = e.KeyChar;
+            var _enteredChar = e.KeyChar;
 
             // "e.KeyChar != 8" - код клавиши Backspace в таблице ASCII
             if (!Char.IsDigit(_enteredChar) &&
@@ -128,6 +151,32 @@ namespace FuelCalculationView
             {
                 e.Handled = true;
             }
+        }
+
+        /// <summary>
+        /// Метод для проверки соответствия строк заданным требованиям
+        /// </summary>
+        /// <param name="checkStroka">Строка, передаваемая на проверку</param>
+        /// <returns>Проверенная строка или Exception</returns>
+        private static string CheckNameVehicle(string checkStroka)
+        {
+            char[] unnecСhar = { '~', '`', '!', '@', '"', '#', '$', ';',
+                '.', ':', ',', '?', '&', '?', '*', '(', ')', '_', '=',
+                '+', '/' };
+
+            if (string.IsNullOrEmpty(checkStroka) || checkStroka == " ")
+            {
+                throw new ArgumentException("Ошибка: не указано имя ТС!");
+            }
+            else if (checkStroka.IndexOfAny(unnecСhar) != -1 ||
+                checkStroka.IndexOf('-', 0, 1) != -1 ||
+                checkStroka.LastIndexOf('-', 0, 1) != -1)
+            {
+                throw new FormatException("Использованы недопустимые " +
+                                            "символы при вводе имени ТС!");
+            }
+
+            return checkStroka;
         }
     }
 }

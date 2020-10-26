@@ -55,6 +55,18 @@
     <Compile Include="AddVehicleForm.Designer.cs">
       <DependentUpon>AddVehicleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FindVehicleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindVehicleForm.Designer.cs">
+      <DependentUpon>FindVehicleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FuelCostForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FuelCostForm.Designer.cs">
+      <DependentUpon>FuelCostForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +77,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddVehicleForm.resx">
       <DependentUpon>AddVehicleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindVehicleForm.resx">
+      <DependentUpon>FindVehicleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FuelCostForm.resx">
+      <DependentUpon>FuelCostForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
