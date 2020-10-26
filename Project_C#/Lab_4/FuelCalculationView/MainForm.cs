@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FuelCalculationModel;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace FuelCalculationView
 {
@@ -23,8 +25,6 @@ namespace FuelCalculationView
         {
             InitializeComponent();
 
-            //dataGridViewMain.AutoGenerateColumns = false;
-
             dataGridViewMain.DataSource = _totalVehicleList;
 
             dataGridViewMain.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -36,24 +36,10 @@ namespace FuelCalculationView
         private BindingList<VehiclesBase> _totalVehicleList
             = new BindingList<VehiclesBase>();
 
-        // Не используется
-        /// <summary>
-        /// Задание колонок в DataGridView
-        /// </summary>
-        private void InitializeDataGridColums()
-        {
-            dataGridViewMain.Columns.Add("TypeVehicle", "Тип ТС");
-            dataGridViewMain.Columns[0].Width = 70;
-            
-            dataGridViewMain.Columns.Add("NameVehicle", "Имя ТС");
-            dataGridViewMain.Columns[1].Width = 80;
-            
-            dataGridViewMain.Columns.Add("WeightVehicle", "Масса ТС, кг");
-            dataGridViewMain.Columns[2].Width = 100;
-        }
+        #region Кнопки
 
         /// <summary>
-        /// Кнопка Add Vehicle
+        /// Кнопка добавления транспортных средств
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -66,23 +52,7 @@ namespace FuelCalculationView
         }
 
         /// <summary>
-        /// Добавление тестовых строк
-        /// </summary>
-        private void TestRow()
-        {
-            dataGridViewMain.Rows.Add(2);
-
-            dataGridViewMain.Rows[0].Cells[0].Value = VehiclesTypes.Car;
-            dataGridViewMain.Rows[0].Cells[1].Value = "BMW";
-            dataGridViewMain.Rows[0].Cells[2].Value = 300;
-
-            dataGridViewMain.Rows[1].Cells[0].Value = VehiclesTypes.Helicopter;
-            dataGridViewMain.Rows[1].Cells[1].Value = "Raptor";
-            dataGridViewMain.Rows[1].Cells[2].Value = 2000;
-        }
-
-        /// <summary>
-        /// Удаление выделенных строк
+        /// Кнопка для удаления выделенных строк в dataGridViewMain
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -192,41 +162,113 @@ namespace FuelCalculationView
         }
 
         /// <summary>
-        /// Запрет на открытие нескольких одинаковых форм.
+        /// Кнопка открытия формы поиска ТС
         /// </summary>
-        /// <param name="nameSearchForm">Имя формы</param>
-        private void SearchForReopenedForms(string nameSearchForm)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FindVehicle_Click(object sender, EventArgs e)
         {
-            var searchForm = Application.OpenForms[nameSearchForm];
+            SearchForReopenedForms("FindVehicleForm");
 
-            if (searchForm != null)
-                searchForm.Close();
+            var findVehicleForm = new FindVehicleForm(_totalVehicleList);
+            findVehicleForm.Show();
         }
 
         /// <summary>
-        /// Поиск ТС по выделенной строке
+        /// Кнопка очистки списка
         /// </summary>
-        /// <returns></returns>
-        private VehiclesBase FindVehicleBySelectedRow()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonClearList_Click(object sender, EventArgs e)
         {
-            foreach (var vehicle in _totalVehicleList)
+            _totalVehicleList.Clear();
+        }
+
+        /// <summary>
+        /// Кнопка сохранения списка в файл
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonSaveList_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filter = "vehicles" +
+                "(*.ead)|*.ead|All files (*.*)|*.*";
+
+            saveFileDialog.AddExtension = true;
+
+            saveFileDialog.Title = "Save vehicles information";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (Convert.ToString(vehicle.Name) == Convert.ToString(
-                    dataGridViewMain.SelectedRows[0].Cells[0].Value) &&
-                    Convert.ToString(vehicle.Type) == Convert.ToString(
-                        dataGridViewMain.SelectedRows[0].Cells[1].Value) &&
-                    Convert.ToString(vehicle.Weight) == Convert.ToString(
-                        dataGridViewMain.SelectedRows[0].Cells[3].Value))
+                var formatter = new BinaryFormatter();
+
+                var fileSave = saveFileDialog.FileName;
+
+                using (var fileStream = new FileStream(
+                    fileSave, FileMode.OpenOrCreate))
                 {
-                    return vehicle;
+                    formatter.Serialize(fileStream, _totalVehicleList);
+
+                    MessageBox.Show("Файл успешно сохранён!");
                 }
             }
-
-            throw new Exception("Не найдено ТС.");
         }
 
         /// <summary>
-        /// Генерация рандомных ТС
+        /// Кнопка загрузки списка ТС из файла формата .ead
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonDownloadList_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "ead файлы (*.ead)|*.ead*";
+
+            openFileDialog.RestoreDirectory = true;
+
+            openFileDialog.Title = "Load vehicles information";
+
+            var forbinary = new BinaryFormatter();
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                if (Path.GetExtension(filePath) == ".ead")
+                {
+                    try
+                    {
+                        using (var fileStream = new FileStream(
+                            filePath, FileMode.OpenOrCreate))
+                        {
+                            var newVehicle = (BindingList<VehiclesBase>)
+                                forbinary.Deserialize(fileStream);
+
+                            _totalVehicleList.Clear();
+
+                            foreach (var vehicles in newVehicle)
+                            {
+                                _totalVehicleList.Add(vehicles);
+                            }
+                            MessageBox.Show("Файл успешно загружен!");
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Не удаётся загрузить файл!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Файл имел некорректный формат!");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Кнопка генерации рандомных ТС
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -259,27 +301,44 @@ namespace FuelCalculationView
             }
         }
 
-        /// <summary>
-        /// Кнопка открытия формы поиска ТС
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FindVehicle_Click(object sender, EventArgs e)
-        {
-            SearchForReopenedForms("FindVehicleForm");
+        #endregion
 
-            var findVehicleForm = new FindVehicleForm(_totalVehicleList);
-            findVehicleForm.Show();
+        #region Методы
+
+        /// <summary>
+        /// Запрет на открытие нескольких одинаковых форм.
+        /// </summary>
+        /// <param name="nameSearchForm">Имя формы</param>
+        private void SearchForReopenedForms(string nameSearchForm)
+        {
+            var searchForm = Application.OpenForms[nameSearchForm];
+
+            if (searchForm != null)
+                searchForm.Close();
         }
 
         /// <summary>
-        /// Очистка списка
+        /// Поиск ТС по выделенной строке
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ClearList_Click(object sender, EventArgs e)
+        /// <returns></returns>
+        private VehiclesBase FindVehicleBySelectedRow()
         {
-            _totalVehicleList.Clear();
+            foreach (var vehicle in _totalVehicleList)
+            {
+                if (Convert.ToString(vehicle.Name) == Convert.ToString(
+                    dataGridViewMain.SelectedRows[0].Cells[0].Value) &&
+                    Convert.ToString(vehicle.Type) == Convert.ToString(
+                        dataGridViewMain.SelectedRows[0].Cells[1].Value) &&
+                    Convert.ToString(vehicle.Weight) == Convert.ToString(
+                        dataGridViewMain.SelectedRows[0].Cells[2].Value))
+                {
+                    return vehicle;
+                }
+            }
+
+            throw new Exception("Не найдено ТС.");
         }
+
+        #endregion
     }
 }

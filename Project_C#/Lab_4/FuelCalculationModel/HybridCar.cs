@@ -9,6 +9,7 @@ namespace FuelCalculationModel
     /// <summary>
     /// Гибридный автомобиль
     /// </summary>
+    [Serializable]
     public class HybridCar : VehiclesBase
     {
         /// <summary>

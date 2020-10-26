@@ -41,7 +41,7 @@ namespace FuelCalculationView
         private BindingList<VehiclesBase> _totalVehicleList;
 
         /// <summary>
-        /// Добавление транспортного средства в DataGridView
+        /// Кнопка добавления транспортного средства в dataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -101,7 +101,8 @@ namespace FuelCalculationView
                 }
                 default:
                 {
-                    throw new Exception("Не указан тип ТС!");
+                    throw new Exception("Непредвиденная ошибка " +
+                        "в методе CreateVehicleByString (default)");
                 }
             }
         }

@@ -9,6 +9,7 @@ namespace FuelCalculationModel
     /// <summary>
     /// Автомобиль с ДВС
     /// </summary>
+    [Serializable]
     public class Car : VehiclesBase
     {
         /// <summary>

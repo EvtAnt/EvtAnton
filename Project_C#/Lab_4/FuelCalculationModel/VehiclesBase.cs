@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace FuelCalculationModel
     /// <summary>
     /// Класс, описывающий транспортное средство
     /// </summary>
+    [Serializable]
     public abstract class VehiclesBase : IFuelCosts
     {
         /// <summary>
@@ -35,7 +37,8 @@ namespace FuelCalculationModel
         /// Расстояние, которое необходимо преодолеть
         /// </summary>
         private double _distance;
-        
+
+        [Browsable(false)]
         /// <summary>
         /// Расстояние, которое необходимо преодолеть
         /// </summary>

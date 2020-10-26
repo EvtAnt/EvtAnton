@@ -11,8 +11,15 @@ using FuelCalculationModel;
 
 namespace FuelCalculationView
 {
+    /// <summary>
+    /// Класс, описывающий форму для расчёта расхода топлива
+    /// </summary>
     public partial class FuelCostForm : Form
     {
+        /// <summary>
+        /// Консруктор класса FuelCostForm
+        /// </summary>
+        /// <param name="vehicle"></param>
         public FuelCostForm(VehiclesBase vehicle)
         {
             InitializeComponent();

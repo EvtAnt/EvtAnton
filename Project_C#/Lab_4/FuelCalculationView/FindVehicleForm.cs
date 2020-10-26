@@ -60,10 +60,23 @@ namespace FuelCalculationView
             {
                 _didisplayedList.Clear();
 
+                #region Проверки заполнения параметров поиска
+
                 // Предвариетльная проверка вводимого имени ТС
                 if (checkBoxNameVehicle.Checked == true)
                 {
                     CheckNameVehicle(textBoxVehiclesName.Text);
+                }
+
+                // Предварительная проверка вводимой массы ТС
+                if (checkBoxWeightVehicle.Checked == true)
+                {
+                    if (string.IsNullOrEmpty(textBoxVehicleWeight.Text) 
+                        || textBoxVehicleWeight.Text == " ")
+                    {
+                        MessageBox.Show("Не указана масса ТС!");
+                        return;
+                    }
                 }
 
                 // Проверка выбора типа ТС
@@ -73,6 +86,10 @@ namespace FuelCalculationView
                     MessageBox.Show("Не выбран тип ТС!");
                     return;
                 }
+                
+                #endregion
+
+                #region Варианты комбинаций параметров поиска
 
                 // Поиск по "Тип ТС", "Имя ТС", "Масса ТС" 
                 if (checkBoxTypeVehicle.Checked == true &&
@@ -188,6 +205,8 @@ namespace FuelCalculationView
                 {
                     MessageBox.Show("Не выбран ни один из параметров поиска ТС.");
                 }
+
+                #endregion
             }
             catch (Exception ex)
             {
@@ -218,10 +237,10 @@ namespace FuelCalculationView
             object sender, 
             KeyPressEventArgs e)
         {
-            var _enteredChar = e.KeyChar;
+            var enteredChar = e.KeyChar;
 
             // "e.KeyChar != 8" - код клавиши Backspace в таблице ASCII
-            if (!Char.IsDigit(_enteredChar) &&
+            if (!Char.IsDigit(enteredChar) &&
                 e.KeyChar != ',' &&
                 e.KeyChar != 8)
             {
@@ -254,6 +273,5 @@ namespace FuelCalculationView
 
             return checkStroka;
         }
-
     }
 }

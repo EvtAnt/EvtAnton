@@ -9,6 +9,7 @@ namespace FuelCalculationModel
     /// <summary>
     /// Вертолёт
     /// </summary>
+    [Serializable]
     public class Helicopter : VehiclesBase
     {
         /// <summary>

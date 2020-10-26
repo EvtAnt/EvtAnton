@@ -7,13 +7,11 @@ using FuelCalculationModel;
 
 namespace ConsoleLoader
 {
-    //TODO: XML +
     /// <summary>
     /// Класс, описывающий программу
     /// </summary>
     public class Program
     {
-        //TODO: XML +
         /// <summary>
         /// Точка входа в приложение
         /// </summary>
