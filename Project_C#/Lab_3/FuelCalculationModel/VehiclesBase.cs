@@ -23,7 +23,7 @@ namespace FuelCalculationModel
         {
             get => _name;
             set => _name = (value != null && value.Replace(" ", "") != "")
-                ? value : throw new Exception("Имя не может быть пустым! ");
+                ? value : throw new Exception("Имя не может быть пустым!");
         }
 
         /// <summary>
@@ -62,7 +62,6 @@ namespace FuelCalculationModel
                 throw new NegativeMeaningExeption("Масса ТС");
         }
       
-        // Убрал *public abstract double FuelCost(double distance)*
         /// <summary>
         /// Расчёт затрачиваемого топлива
         /// </summary>

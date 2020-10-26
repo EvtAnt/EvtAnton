@@ -17,6 +17,9 @@ namespace FuelCalculationModel
         Undefined
     }
 
+    /// <summary>
+    /// Класс, описывающий метод получения класса ТС по его типу
+    /// </summary>
     public static class TypesOfVehicles
     {
         /// <summary>

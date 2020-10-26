@@ -38,8 +38,21 @@ namespace ConsoleLoader
         /// <param name="vehicle">Транспортное средство</param>
         private static void SetName(VehiclesBase vehicle)
         {
-            Console.Write("Название ТС: ");
-            vehicle.Name = Console.ReadLine();
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Название ТС: ");
+                    vehicle.Name = Console.ReadLine();
+                    CheckNameCar(vehicle.Name);
+                    break;
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                
+            }    
         }
 
         /// <summary>
@@ -48,8 +61,19 @@ namespace ConsoleLoader
         /// <param name="vehicle">Транспортное средство</param>
         private static void SetWeight(VehiclesBase vehicle)
         {
-            Console.Write("Масса, кг: ");
-            vehicle.Weight = double.Parse(Console.ReadLine());
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Масса, кг: ");
+                    vehicle.Weight = double.Parse(Console.ReadLine());
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"\t>>> {ex.Message}");
+                }
+            }
         }
 
         /// <summary>
@@ -58,8 +82,38 @@ namespace ConsoleLoader
         /// <param name="vehicle">Транспортное средство</param>
         private static void SetDistance(VehiclesBase vehicle)
         {
-            Console.Write("Дистанция, км: ");
-            vehicle.Distance = double.Parse(Console.ReadLine());
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Дистанция, км: ");
+                    vehicle.Distance = double.Parse(Console.ReadLine());
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"\t>>> {ex.Message}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Метод для проверки соответствия строк заданным требованиям
+        /// </summary>
+        /// <param name="checkStroka">Строка, передаваемая на проверку</param>
+        private static void CheckNameCar(string checkStroka)
+        {
+            char[] unnecСhar = { '~', '`', '!', '@', '"', '#', '$', ';',
+                '.', ':', ',', '?', '&', '?', '*', '(', ')', '_', '=',
+                '+', '/'};
+
+            if (checkStroka.IndexOfAny(unnecСhar) != -1 ||
+                checkStroka.IndexOf('-', 0, 1) != -1 ||
+                checkStroka.LastIndexOf('-', 0, 1) != -1)
+            {
+                throw new FormatException("\t>>> Использованы недопустимые " +
+                                            "символы при вводе имени ТС!");
+            }
         }
     }
 }
