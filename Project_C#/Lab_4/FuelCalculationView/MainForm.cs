@@ -27,7 +27,7 @@ namespace FuelCalculationView
 
             dataGridViewMain.DataSource = _totalVehicleList;
 
-            dataGridViewMain.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+           dataGridViewMain.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         /// <summary>
@@ -45,10 +45,8 @@ namespace FuelCalculationView
         /// <param name="e"></param>
         private void AddVehicle_Click(object sender, EventArgs e)
         {
-            SearchForReopenedForms("AddVehicleForm");
-
-            var addVehicleForm = new AddVehicleForm(_totalVehicleList);
-            addVehicleForm.Show();
+            var addVehicleForm 
+                = new AddVehicleForm(_totalVehicleList).ShowDialog();
         }
 
         /// <summary>
@@ -78,7 +76,7 @@ namespace FuelCalculationView
                                         delRow.Cells[1].Value) &&
                         Convert.ToString(
                             vehicle.Weight) == Convert.ToString(
-                                        delRow.Cells[3].Value))
+                                        delRow.Cells[2].Value))
                     {
                         listToRemove.Add(vehicle);
                     }
@@ -96,50 +94,6 @@ namespace FuelCalculationView
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
-            //int[] indexDeleteVehicle = new int[0];
-            //int lenghtArrayIndex = 0;
-
-            ////List<int> indexDeletVehicle = new List<int>();
-            ////int schet = 0;
-            ////foreach (var vehicle in _totalVehicleList)
-            ////{
-            ////    if (Convert.ToString(vehicle.Name) == Convert.ToString(
-            ////        dataGridViewMain.SelectedRows[0].Cells[0].Value) &&
-            ////        Convert.ToString(vehicle.Type) == Convert.ToString(
-            ////            dataGridViewMain.SelectedRows[0].Cells[1].Value) &&
-            ////        Convert.ToString(vehicle.Weight) == Convert.ToString(
-            ////            dataGridViewMain.SelectedRows[0].Cells[3].Value))
-            ////    {
-            ////        indexDeletVehicle.Add(schet);
-            ////        schet++;
-            ////        //lenghtArrayIndex++;
-            ////        //
-            ////        //int[] buffer = indexDeleteVehicle;
-            ////        //
-            ////        //indexDeleteVehicle = new int[lenghtArrayIndex];
-            ////    }
-            ////}
-            ////
-            ////schet = 0;
-            ////for (int i = 0; i < indexDeletVehicle.Count; i++)
-            ////{ 
-            ////    _totalVehicleList.RemoveAt(indexDeletVehicle[i] - schet);
-            ////    schet++;
-            ////}
-            //var vehicle = VehiclesBase;
-            //for (int i = 0; i < _totalVehicleList.Count; i++)
-            //{
-            //    if (Convert.ToString(vehicle.Name) == Convert.ToString(
-            //        dataGridViewMain.SelectedRows[0].Cells[0].Value) &&
-            //        Convert.ToString(vehicle.Type) == Convert.ToString(
-            //            dataGridViewMain.SelectedRows[0].Cells[1].Value) &&
-            //        Convert.ToString(vehicle.Weight) == Convert.ToString(
-            //            dataGridViewMain.SelectedRows[0].Cells[3].Value))
-            //    {
-            //        _totalVehicleList.RemoveAt(dataGridViewMain.CurrentRow.Index);
-            //        //int ne = dataGridViewMain.CurrentRow.Index;
-            //    }
-            //}    
         }
 
         /// <summary>
@@ -149,11 +103,12 @@ namespace FuelCalculationView
         /// <param name="e"></param>
         private void ButtonFuelCost_Click(object sender, EventArgs e)
         {
-            SearchForReopenedForms("FuelCostForm");
             try
             {
-                FuelCostForm fuelCostForm = new FuelCostForm(FindVehicleBySelectedRow());
-                fuelCostForm.Show();
+                FuelCostForm fuelCostForm 
+                    = new FuelCostForm(FindVehicleBySelectedRow());
+
+                fuelCostForm.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -168,10 +123,8 @@ namespace FuelCalculationView
         /// <param name="e"></param>
         private void FindVehicle_Click(object sender, EventArgs e)
         {
-            SearchForReopenedForms("FindVehicleForm");
-
-            var findVehicleForm = new FindVehicleForm(_totalVehicleList);
-            findVehicleForm.Show();
+            var findVehicleForm 
+                = new FindVehicleForm(_totalVehicleList).ShowDialog();
         }
 
         /// <summary>
@@ -305,17 +258,21 @@ namespace FuelCalculationView
 
         #region Методы
 
+        // TODO: через ShowDialog() +
         /// <summary>
         /// Запрет на открытие нескольких одинаковых форм.
         /// </summary>
         /// <param name="nameSearchForm">Имя формы</param>
-        private void SearchForReopenedForms(string nameSearchForm)
-        {
-            var searchForm = Application.OpenForms[nameSearchForm];
-
-            if (searchForm != null)
-                searchForm.Close();
-        }
+        //private void SearchForReopenedForms(string nameSearchForm)
+        //{
+        //    //TODO: блокировать родительское окно
+        //    var searchForm = Application.OpenForms[nameSearchForm];
+        //
+        //    if (searchForm != null)
+        //    {
+        //        searchForm.Close();
+        //    }
+        //}
 
         /// <summary>
         /// Поиск ТС по выделенной строке

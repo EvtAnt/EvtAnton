@@ -30,12 +30,15 @@ namespace FuelCalculationView
             dataGridViewFoundVehicles.AutoSizeColumnsMode = 
                 DataGridViewAutoSizeColumnsMode.Fill;
 
+            //TODO: Дубль +
             // Внесение в Combobox всех типов ТС из "enum VehiclesTypes"
-            var vehicleTypes = Enum.GetNames(typeof(VehiclesTypes));
-            for (int i = 0; i < vehicleTypes.Length; i++)
-            {
-                comboBoxTypeVehicles.Items.Add(vehicleTypes[i]);
-            }
+            //var vehicleTypes = Enum.GetNames(typeof(VehiclesTypes));
+            //for (int i = 0; i < vehicleTypes.Length; i++)
+            //{
+            //    comboBoxTypeVehicles.Items.Add(vehicleTypes[i]);
+            //}
+            comboBoxTypeVehicles.Items.AddRange(Enum.GetNames(typeof(VehiclesTypes)));
+
         }
 
         /// <summary>
@@ -65,7 +68,7 @@ namespace FuelCalculationView
                 // Предвариетльная проверка вводимого имени ТС
                 if (checkBoxNameVehicle.Checked == true)
                 {
-                    CheckNameVehicle(textBoxVehiclesName.Text);
+                    SharedServices.CheckNameVehicle(textBoxVehiclesName.Text);
                 }
 
                 // Предварительная проверка вводимой массы ТС
@@ -86,106 +89,121 @@ namespace FuelCalculationView
                     MessageBox.Show("Не выбран тип ТС!");
                     return;
                 }
-                
+
                 #endregion
 
                 #region Варианты комбинаций параметров поиска
 
-                // Поиск по "Тип ТС", "Имя ТС", "Масса ТС" 
-                if (checkBoxTypeVehicle.Checked == true &&
-                    checkBoxNameVehicle.Checked == true &&
-                    checkBoxWeightVehicle.Checked == true)
-                {
-                    for (int i = 0; i < _localVehicleList.Count; i++)
-                    {
-                        if (comboBoxTypeVehicles.Text ==
-                            Convert.ToString(_localVehicleList[i].Type) &&
-                            textBoxVehiclesName.Text ==
-                            _localVehicleList[i].Name &&
-                            Convert.ToDouble(textBoxVehicleWeight.Text) ==
-                            _localVehicleList[i].Weight)
-                        {
-                            _didisplayedList.Add(_localVehicleList[i]);
-                        }
-                    }
-                    return;
-                }
-                // Поиск по "Тип ТС", "Имя ТС" 
-                if (checkBoxTypeVehicle.Checked == true &&
-                    checkBoxNameVehicle.Checked == true)
-                {
-                    //_didisplayedList.Clear();
-                    for (int i = 0; i < _localVehicleList.Count; i++)
-                    {
-                        if (comboBoxTypeVehicles.Text ==
-                            Convert.ToString(_localVehicleList[i].Type) &&
-                            textBoxVehiclesName.Text ==
-                            _localVehicleList[i].Name)
-                        {
-                            _didisplayedList.Add(_localVehicleList[i]);
-                        }
-                    }
-                    return;
-                }
-                // Поиск по "Тип ТС", "Масса ТС" 
-                if (checkBoxTypeVehicle.Checked == true &&
-                    checkBoxWeightVehicle.Checked == true)
-                {
-                    for (int i = 0; i < _localVehicleList.Count; i++)
-                    {
-                        if (comboBoxTypeVehicles.Text ==
-                            Convert.ToString(_localVehicleList[i].Type) &&
-                            Convert.ToDouble(textBoxVehicleWeight.Text) ==
-                            _localVehicleList[i].Weight)
-                        {
-                            _didisplayedList.Add(_localVehicleList[i]);
-                        }
-                    }
-                    return;
-                }
-                // Поиск по "Имя ТС", "Масса ТС" 
-                if (checkBoxNameVehicle.Checked == true &&
-                    checkBoxWeightVehicle.Checked == true)
-                {
-                    for (int i = 0; i < _localVehicleList.Count; i++)
-                    {
-                        if (textBoxVehiclesName.Text ==
-                            _localVehicleList[i].Name &&
-                            Convert.ToDouble(textBoxVehicleWeight.Text) ==
-                            _localVehicleList[i].Weight)
-                        {
-                            _didisplayedList.Add(_localVehicleList[i]);
-                        }
-                    }
-                    return;
-                }
-                // Поиск по "Тип ТС"
+                // Параметр поиска "Тип ТС" выбран
                 if (checkBoxTypeVehicle.Checked == true)
                 {
-                    for (int i = 0; i < _localVehicleList.Count; i++)
+                    // Параметры поиска "Тип ТС" и "Имя ТС" выбраны
+                    if (checkBoxNameVehicle.Checked == true)
                     {
-                        if (comboBoxTypeVehicles.Text ==
-                            Convert.ToString(_localVehicleList[i].Type))
+                        // Параметры поиска "Тип ТС", "Имя ТС", "Масса ТС" выбраны
+                        if (checkBoxWeightVehicle.Checked == true)
                         {
-                            _didisplayedList.Add(_localVehicleList[i]);
+                            for (int i = 0; i < _localVehicleList.Count; i++)
+                            {
+                                if (comboBoxTypeVehicles.Text ==
+                                    Convert.ToString(_localVehicleList[i].Type) &&
+                                    textBoxVehiclesName.Text ==
+                                    _localVehicleList[i].Name &&
+                                    Convert.ToDouble(textBoxVehicleWeight.Text) ==
+                                    _localVehicleList[i].Weight)
+                                {
+                                    _didisplayedList.Add(_localVehicleList[i]);
+                                }
+                            }
+                            EmptyListMssage(_didisplayedList);
+                            return;
+                        }
+                        // Не выбран параметр поиска "Масса ТС"
+                        else
+                        {
+                            for (int i = 0; i < _localVehicleList.Count; i++)
+                            {
+                                if (comboBoxTypeVehicles.Text ==
+                                    Convert.ToString(_localVehicleList[i].Type) &&
+                                    textBoxVehiclesName.Text ==
+                                    _localVehicleList[i].Name)
+                                {
+                                    _didisplayedList.Add(_localVehicleList[i]);
+                                }
+                            }
+                            EmptyListMssage(_didisplayedList);
+                            return;
                         }
                     }
-                    return;
+                    // Параметры поиска "Тип ТС" и "Масса ТС" выбраны
+                    // Не выбран параметр поиска "Имя ТС"
+                    else if (checkBoxWeightVehicle.Checked == true)
+                    {
+                        for (int i = 0; i < _localVehicleList.Count; i++)
+                        {
+                            if (comboBoxTypeVehicles.Text ==
+                                Convert.ToString(_localVehicleList[i].Type) &&
+                                Convert.ToDouble(textBoxVehicleWeight.Text) ==
+                                _localVehicleList[i].Weight)
+                            {
+                                _didisplayedList.Add(_localVehicleList[i]);
+                            }
+                        }
+                        EmptyListMssage(_didisplayedList);
+                        return;
+                    }
+                    // Параметром поиска выбран только "Тип ТС"
+                    else
+                    {
+                        for (int i = 0; i < _localVehicleList.Count; i++)
+                        {
+                            if (comboBoxTypeVehicles.Text ==
+                                Convert.ToString(_localVehicleList[i].Type))
+                            {
+                                _didisplayedList.Add(_localVehicleList[i]);
+                            }
+                        }
+                        EmptyListMssage(_didisplayedList);
+                        return;
+                    }
                 }
-                // Поиск по "Имя ТС" 
+
+                // Параметр поиска "Имя ТС" выбран
                 if (checkBoxNameVehicle.Checked == true)
                 {
-                    for (int i = 0; i < _localVehicleList.Count; i++)
+                    // Параметры поиска "Имя ТС" и "Масса ТС" выбраны
+                    if (checkBoxWeightVehicle.Checked == true)
                     {
-                        if (textBoxVehiclesName.Text ==
-                            _localVehicleList[i].Name)
+                        for (int i = 0; i < _localVehicleList.Count; i++)
                         {
-                            _didisplayedList.Add(_localVehicleList[i]);
+                            if (textBoxVehiclesName.Text ==
+                                _localVehicleList[i].Name &&
+                                Convert.ToDouble(textBoxVehicleWeight.Text) ==
+                                _localVehicleList[i].Weight)
+                            {
+                                _didisplayedList.Add(_localVehicleList[i]);
+                            }
                         }
+                        EmptyListMssage(_didisplayedList);
+                        return;
                     }
-                    return;
+                    // Параметром поиска выбран только "Имя ТС"
+                    else
+                    {
+                        for (int i = 0; i < _localVehicleList.Count; i++)
+                        {
+                            if (textBoxVehiclesName.Text ==
+                                _localVehicleList[i].Name)
+                            {
+                                _didisplayedList.Add(_localVehicleList[i]);
+                            }
+                        }
+                        EmptyListMssage(_didisplayedList);
+                        return;
+                    }
                 }
-                // Поиск по "Масса ТС" 
+
+                // Параметром поиска выбран только "Масса ТС"
                 if (checkBoxWeightVehicle.Checked == true)
                 {
                     for (int i = 0; i < _localVehicleList.Count; i++)
@@ -196,15 +214,134 @@ namespace FuelCalculationView
                             _didisplayedList.Add(_localVehicleList[i]);
                         }
                     }
+                    EmptyListMssage(_didisplayedList);
                     return;
                 }
-                // Не выбран ни один из параметров поиска ТС
-                else if (checkBoxTypeVehicle.Checked == false &&
-                    checkBoxNameVehicle.Checked == false &&
-                    checkBoxWeightVehicle.Checked == false)
+                // Не выбран ни один из параметров поиска
+                else
                 {
                     MessageBox.Show("Не выбран ни один из параметров поиска ТС.");
                 }
+                
+                #endregion
+
+                #region Старые варианты комбинаций параметров поиска
+                ////TODO: по одному проверять через if +
+                //
+                //// Поиск по "Тип ТС", "Имя ТС", "Масса ТС" 
+                //if (checkBoxTypeVehicle.Checked == true &&
+                //    checkBoxNameVehicle.Checked == true &&
+                //    checkBoxWeightVehicle.Checked == true)
+                //{
+                //    for (int i = 0; i < _localVehicleList.Count; i++)
+                //    {
+                //        if (comboBoxTypeVehicles.Text ==
+                //            Convert.ToString(_localVehicleList[i].Type) &&
+                //            textBoxVehiclesName.Text ==
+                //            _localVehicleList[i].Name &&
+                //            Convert.ToDouble(textBoxVehicleWeight.Text) ==
+                //            _localVehicleList[i].Weight)
+                //        {
+                //            _didisplayedList.Add(_localVehicleList[i]);
+                //        }
+                //    }
+                //    return;
+                //}
+                //// Поиск по "Тип ТС", "Имя ТС" 
+                //if (checkBoxTypeVehicle.Checked == true &&
+                //    checkBoxNameVehicle.Checked == true)
+                //{
+                //    //_didisplayedList.Clear();
+                //    for (int i = 0; i < _localVehicleList.Count; i++)
+                //    {
+                //        if (comboBoxTypeVehicles.Text ==
+                //            Convert.ToString(_localVehicleList[i].Type) &&
+                //            textBoxVehiclesName.Text ==
+                //            _localVehicleList[i].Name)
+                //        {
+                //            _didisplayedList.Add(_localVehicleList[i]);
+                //        }
+                //    }
+                //    return;
+                //}
+                //// Поиск по "Тип ТС", "Масса ТС" 
+                //if (checkBoxTypeVehicle.Checked == true &&
+                //    checkBoxWeightVehicle.Checked == true)
+                //{
+                //    for (int i = 0; i < _localVehicleList.Count; i++)
+                //    {
+                //        if (comboBoxTypeVehicles.Text ==
+                //            Convert.ToString(_localVehicleList[i].Type) &&
+                //            Convert.ToDouble(textBoxVehicleWeight.Text) ==
+                //            _localVehicleList[i].Weight)
+                //        {
+                //            _didisplayedList.Add(_localVehicleList[i]);
+                //        }
+                //    }
+                //    return;
+                //}
+                //// Поиск по "Имя ТС", "Масса ТС" 
+                //if (checkBoxNameVehicle.Checked == true &&
+                //    checkBoxWeightVehicle.Checked == true)
+                //{
+                //    for (int i = 0; i < _localVehicleList.Count; i++)
+                //    {
+                //        if (textBoxVehiclesName.Text ==
+                //            _localVehicleList[i].Name &&
+                //            Convert.ToDouble(textBoxVehicleWeight.Text) ==
+                //            _localVehicleList[i].Weight)
+                //        {
+                //            _didisplayedList.Add(_localVehicleList[i]);
+                //        }
+                //    }
+                //    return;
+                //}
+                //// Поиск по "Тип ТС"
+                //if (checkBoxTypeVehicle.Checked == true)
+                //{
+                //    for (int i = 0; i < _localVehicleList.Count; i++)
+                //    {
+                //        if (comboBoxTypeVehicles.Text ==
+                //            Convert.ToString(_localVehicleList[i].Type))
+                //        {
+                //            _didisplayedList.Add(_localVehicleList[i]);
+                //        }
+                //    }
+                //    return;
+                //}
+                //// Поиск по "Имя ТС" 
+                //if (checkBoxNameVehicle.Checked == true)
+                //{
+                //    for (int i = 0; i < _localVehicleList.Count; i++)
+                //    {
+                //        if (textBoxVehiclesName.Text ==
+                //            _localVehicleList[i].Name)
+                //        {
+                //            _didisplayedList.Add(_localVehicleList[i]);
+                //        }
+                //    }
+                //    return;
+                //}
+                //// Поиск по "Масса ТС" 
+                //if (checkBoxWeightVehicle.Checked == true)
+                //{
+                //    for (int i = 0; i < _localVehicleList.Count; i++)
+                //    {
+                //        if (Convert.ToDouble(textBoxVehicleWeight.Text) ==
+                //            _localVehicleList[i].Weight)
+                //        {
+                //            _didisplayedList.Add(_localVehicleList[i]);
+                //        }
+                //    }
+                //    return;
+                //}
+                //// Не выбран ни один из параметров поиска ТС
+                //else if (checkBoxTypeVehicle.Checked == false &&
+                //    checkBoxNameVehicle.Checked == false &&
+                //    checkBoxWeightVehicle.Checked == false)
+                //{
+                //    MessageBox.Show("Не выбран ни один из параметров поиска ТС.");
+                //}
 
                 #endregion
             }
@@ -237,41 +374,47 @@ namespace FuelCalculationView
             object sender, 
             KeyPressEventArgs e)
         {
-            var enteredChar = e.KeyChar;
-
-            // "e.KeyChar != 8" - код клавиши Backspace в таблице ASCII
-            if (!Char.IsDigit(enteredChar) &&
-                e.KeyChar != ',' &&
-                e.KeyChar != 8)
-            {
-                e.Handled = true;
-            }
+            SharedServices.CheckCount(e);
+            //TODO: Дубль +
         }
 
         /// <summary>
-        /// Метод для проверки соответствия строк заданным требованиям
+        /// Сообщение об отсутствии совпадений при поиске ТС
         /// </summary>
-        /// <param name="checkStroka">Строка, передаваемая на проверку</param>
-        /// <returns>Проверенная строка или Exception</returns>
-        private static string CheckNameVehicle(string checkStroka)
+        /// <param name="vehiclesList">Список совпадений</param>
+        public void EmptyListMssage(BindingList<VehiclesBase> vehiclesList)
         {
-            char[] unnecСhar = { '~', '`', '!', '@', '"', '#', '$', ';',
-                '.', ':', ',', '?', '&', '?', '*', '(', ')', '_', '=',
-                '+', '/' };
-
-            if (string.IsNullOrEmpty(checkStroka) || checkStroka == " ")
+            if (vehiclesList.Count == 0)
             {
-                throw new ArgumentException("Ошибка: не указано имя ТС!");
+                MessageBox.Show("Совпадений не обнаружено!");
             }
-            else if (checkStroka.IndexOfAny(unnecСhar) != -1 ||
-                checkStroka.IndexOf('-', 0, 1) != -1 ||
-                checkStroka.LastIndexOf('-', 0, 1) != -1)
-            {
-                throw new FormatException("Использованы недопустимые " +
-                                            "символы при вводе имени ТС!");
-            }
-
-            return checkStroka;
         }
+
+        //TODO: Дубль +
+        ///// <summary>
+        ///// Метод для проверки соответствия строк заданным требованиям
+        ///// </summary>
+        ///// <param name="checkStroka">Строка, передаваемая на проверку</param>
+        ///// <returns>Проверенная строка или Exception</returns>
+        //private static string CheckNameVehicle(string checkStroka)
+        //{
+        //    char[] unnecСhar = { '~', '`', '!', '@', '"', '#', '$', ';',
+        //        '.', ':', ',', '?', '&', '?', '*', '(', ')', '_', '=',
+        //        '+', '/' };
+        //
+        //    if (string.IsNullOrEmpty(checkStroka) || checkStroka == " ")
+        //    {
+        //        throw new ArgumentException("Ошибка: не указано имя ТС!");
+        //    }
+        //    else if (checkStroka.IndexOfAny(unnecСhar) != -1 ||
+        //        checkStroka.IndexOf('-', 0, 1) != -1 ||
+        //        checkStroka.LastIndexOf('-', 0, 1) != -1)
+        //    {
+        //        throw new FormatException("Использованы недопустимые " +
+        //                                    "символы при вводе имени ТС!");
+        //    }
+        //
+        //    return checkStroka;
+        //}
     }
 }

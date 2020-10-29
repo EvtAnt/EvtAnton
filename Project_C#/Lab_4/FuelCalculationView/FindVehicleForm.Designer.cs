@@ -48,10 +48,14 @@
             // 
             this.dataGridViewFoundVehicles.AllowUserToAddRows = false;
             this.dataGridViewFoundVehicles.AllowUserToDeleteRows = false;
+            this.dataGridViewFoundVehicles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewFoundVehicles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFoundVehicles.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewFoundVehicles.Name = "dataGridViewFoundVehicles";
             this.dataGridViewFoundVehicles.ReadOnly = true;
+            this.dataGridViewFoundVehicles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewFoundVehicles.Size = new System.Drawing.Size(275, 150);
             this.dataGridViewFoundVehicles.TabIndex = 0;
             // 
@@ -66,19 +70,23 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.ButtonCloseFindVehicleForm);
             this.groupBox1.Controls.Add(this.ButtonSearchVehicles);
             this.groupBox1.Controls.Add(this.dataGridViewFoundVehicles);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(288, 306);
+            this.groupBox1.Size = new System.Drawing.Size(288, 304);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Наеденные транспортные средства";
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.comboBoxTypeVehicles);
             this.groupBox2.Controls.Add(this.checkBoxTypeVehicle);
             this.groupBox2.Controls.Add(this.textBoxVehiclesName);
@@ -139,6 +147,7 @@
             // 
             // ButtonCloseFindVehicleForm
             // 
+            this.ButtonCloseFindVehicleForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ButtonCloseFindVehicleForm.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ButtonCloseFindVehicleForm.Location = new System.Drawing.Point(199, 245);
             this.ButtonCloseFindVehicleForm.Name = "ButtonCloseFindVehicleForm";
@@ -150,6 +159,7 @@
             // 
             // ButtonSearchVehicles
             // 
+            this.ButtonSearchVehicles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ButtonSearchVehicles.Location = new System.Drawing.Point(178, 200);
             this.ButtonSearchVehicles.Name = "ButtonSearchVehicles";
             this.ButtonSearchVehicles.Size = new System.Drawing.Size(103, 23);
@@ -162,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(306, 331);
+            this.ClientSize = new System.Drawing.Size(312, 329);
             this.Controls.Add(this.groupBox1);
             this.Name = "FindVehicleForm";
             this.Text = "FindVehicleForm";

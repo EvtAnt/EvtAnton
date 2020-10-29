@@ -26,7 +26,7 @@ namespace FuelCalculationView
 
             _setVehicle = vehicle;
 
-            TextBoxFuelCostText.Text = string.Empty;
+            textBoxFuelCostText.Text = string.Empty;
         }
 
         /// <summary>
@@ -53,11 +53,11 @@ namespace FuelCalculationView
         {
             try
             {
-                if (!string.IsNullOrEmpty(TextBoxDistance.Text))
+                if (!string.IsNullOrEmpty(textBoxDistance.Text))
                 {
-                    _setVehicle.Distance = Convert.ToDouble(TextBoxDistance.Text);
+                    _setVehicle.Distance = Convert.ToDouble(textBoxDistance.Text);
 
-                    TextBoxFuelCostText.Text = $"{_setVehicle.Type} " +
+                    textBoxFuelCostText.Text = $"{_setVehicle.Type} " +
                         $"{_setVehicle.Name} потратит " +
                         $"{_setVehicle.FuelCost()} л. топлива.";
                 }
@@ -72,6 +72,7 @@ namespace FuelCalculationView
             }
         }
 
+        //TODO: Дубль +
         /// <summary>
         /// Проверка введённых символов в "TextBoxDistance"
         /// </summary>
@@ -79,15 +80,7 @@ namespace FuelCalculationView
         /// <param name="e"></param>
         private void TextBoxDistance_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var _enteredChar = e.KeyChar;
-            
-            // "e.KeyChar != 8" - код клавиши Backspace в таблице ASCII
-            if (!Char.IsDigit(_enteredChar) &&
-                e.KeyChar != ',' &&
-                e.KeyChar != 8)
-            {
-                e.Handled = true;
-            }
+            SharedServices.CheckCount(e);
         }
     }
 }

@@ -25,12 +25,16 @@ namespace FuelCalculationView
         {
             InitializeComponent();
 
+            //TODO: Завернуть в метод + использовать List +
+
             // Внесение в Combobox всех типов ТС из "enum VehiclesTypes"
-            var vehicleTypes = Enum.GetNames(typeof(VehiclesTypes));
-            for (int i = 0; i < vehicleTypes.Length; i++)
-            { 
-                comboBoxTypesOfVehicle.Items.Add(vehicleTypes[i]);
-            }
+            //var vehicleTypes = Enum.GetNames(typeof(VehiclesTypes));
+            //for (int i = 0; i < vehicleTypes.Length; i++)
+            //{ 
+            //    // addRange
+            //    comboBoxTypesOfVehicle.Items.Add(vehicleTypes[i]);
+            //}
+            comboBoxTypesOfVehicle.Items.AddRange(Enum.GetNames(typeof(VehiclesTypes)));
                 
             _totalVehicleList = vehicleList;
         }
@@ -54,8 +58,8 @@ namespace FuelCalculationView
                     _totalVehicleList.Add(
                     CreateVehicleByString(
                         comboBoxTypesOfVehicle.Text,
-                        CheckNameVehicle(textBoxNamesOfVehicle.Text),
-                        textBoxWeightOfVehicle.Text));
+                        SharedServices.CheckNameVehicle(textBoxNamesOfVehicle.Text),
+                        textBoxWeightOfVehicle.Text.Replace('.', ',')));
 
                     this.Close();
                 }
@@ -120,10 +124,10 @@ namespace FuelCalculationView
             string weight)
         {
             vehicle.Name = name;
-            vehicle.Weight = (!string.IsNullOrEmpty(weight)) ? 
-                Convert.ToDouble(weight) :
-                throw new ArgumentException(
-                    "Ошибка: Не указана масса ТС!");
+            vehicle.Weight = 
+                !string.IsNullOrEmpty(weight) 
+                    ? Convert.ToDouble(weight) 
+                    : throw new ArgumentException("Ошибка: Не указана масса ТС!");
         }
 
         /// <summary>
@@ -141,43 +145,10 @@ namespace FuelCalculationView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void vehicleWeight_KeyPress(object sender, KeyPressEventArgs e)
+        //TODO: RSDN +
+        private void VehicleWeight_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var _enteredChar = e.KeyChar;
-
-            // "e.KeyChar != 8" - код клавиши Backspace в таблице ASCII
-            if (!Char.IsDigit(_enteredChar) &&
-                e.KeyChar != ',' &&
-                e.KeyChar != 8)
-            {
-                e.Handled = true;
-            }
-        }
-
-        /// <summary>
-        /// Метод для проверки соответствия строк заданным требованиям
-        /// </summary>
-        /// <param name="checkStroka">Строка, передаваемая на проверку</param>
-        /// <returns>Проверенная строка или Exception</returns>
-        private static string CheckNameVehicle(string checkStroka)
-        {
-            char[] unnecСhar = { '~', '`', '!', '@', '"', '#', '$', ';',
-                '.', ':', ',', '?', '&', '?', '*', '(', ')', '_', '=',
-                '+', '/' };
-
-            if (string.IsNullOrEmpty(checkStroka) || checkStroka == " ")
-            {
-                throw new ArgumentException("Ошибка: не указано имя ТС!");
-            }
-            else if (checkStroka.IndexOfAny(unnecСhar) != -1 ||
-                checkStroka.IndexOf('-', 0, 1) != -1 ||
-                checkStroka.LastIndexOf('-', 0, 1) != -1)
-            {
-                throw new FormatException("Использованы недопустимые " +
-                                            "символы при вводе имени ТС!");
-            }
-
-            return checkStroka;
+            SharedServices.CheckCount(e);
         }
     }
 }

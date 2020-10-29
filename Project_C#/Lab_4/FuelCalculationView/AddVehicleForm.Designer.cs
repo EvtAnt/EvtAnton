@@ -95,7 +95,7 @@
             this.textBoxWeightOfVehicle.Name = "textBoxWeightOfVehicle";
             this.textBoxWeightOfVehicle.Size = new System.Drawing.Size(64, 22);
             this.textBoxWeightOfVehicle.TabIndex = 5;
-            this.textBoxWeightOfVehicle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vehicleWeight_KeyPress);
+            this.textBoxWeightOfVehicle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VehicleWeight_KeyPress);
             // 
             // OK
             // 

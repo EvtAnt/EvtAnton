@@ -30,8 +30,8 @@
         {
             this.ButtonCalculation = new System.Windows.Forms.Button();
             this.ButtonClose = new System.Windows.Forms.Button();
-            this.TextBoxDistance = new System.Windows.Forms.TextBox();
-            this.TextBoxFuelCostText = new System.Windows.Forms.TextBox();
+            this.textBoxDistance = new System.Windows.Forms.TextBox();
+            this.textBoxFuelCostText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -55,23 +55,23 @@
             this.ButtonClose.UseVisualStyleBackColor = true;
             this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
             // 
-            // TextBoxDistance
+            // textBoxDistance
             // 
-            this.TextBoxDistance.Location = new System.Drawing.Point(125, 59);
-            this.TextBoxDistance.Name = "TextBoxDistance";
-            this.TextBoxDistance.Size = new System.Drawing.Size(63, 20);
-            this.TextBoxDistance.TabIndex = 3;
-            this.TextBoxDistance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxDistance_KeyPress);
+            this.textBoxDistance.Location = new System.Drawing.Point(125, 59);
+            this.textBoxDistance.Name = "textBoxDistance";
+            this.textBoxDistance.Size = new System.Drawing.Size(63, 20);
+            this.textBoxDistance.TabIndex = 3;
+            this.textBoxDistance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxDistance_KeyPress);
             // 
-            // TextBoxFuelCostText
+            // textBoxFuelCostText
             // 
-            this.TextBoxFuelCostText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxFuelCostText.Location = new System.Drawing.Point(12, 12);
-            this.TextBoxFuelCostText.Multiline = true;
-            this.TextBoxFuelCostText.Name = "TextBoxFuelCostText";
-            this.TextBoxFuelCostText.ReadOnly = true;
-            this.TextBoxFuelCostText.Size = new System.Drawing.Size(176, 44);
-            this.TextBoxFuelCostText.TabIndex = 4;
+            this.textBoxFuelCostText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxFuelCostText.Location = new System.Drawing.Point(12, 12);
+            this.textBoxFuelCostText.Multiline = true;
+            this.textBoxFuelCostText.Name = "textBoxFuelCostText";
+            this.textBoxFuelCostText.ReadOnly = true;
+            this.textBoxFuelCostText.Size = new System.Drawing.Size(176, 44);
+            this.textBoxFuelCostText.TabIndex = 4;
             // 
             // label1
             // 
@@ -89,12 +89,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(199, 111);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.TextBoxFuelCostText);
-            this.Controls.Add(this.TextBoxDistance);
+            this.Controls.Add(this.textBoxFuelCostText);
+            this.Controls.Add(this.textBoxDistance);
             this.Controls.Add(this.ButtonClose);
             this.Controls.Add(this.ButtonCalculation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Name = "FuelCostForm";
             this.Text = "FuelCostForm";
             this.ResumeLayout(false);
@@ -106,8 +105,8 @@
 
         private System.Windows.Forms.Button ButtonCalculation;
         private System.Windows.Forms.Button ButtonClose;
-        private System.Windows.Forms.TextBox TextBoxDistance;
-        private System.Windows.Forms.TextBox TextBoxFuelCostText;
+        private System.Windows.Forms.TextBox textBoxDistance;
+        private System.Windows.Forms.TextBox textBoxFuelCostText;
         private System.Windows.Forms.Label label1;
     }
 }
