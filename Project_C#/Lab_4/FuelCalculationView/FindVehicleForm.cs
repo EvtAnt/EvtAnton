@@ -37,7 +37,7 @@ namespace FuelCalculationView
         /// <summary>
         /// Список ТС, используемый только в форме "FindVehicleForm"
         /// </summary>
-        public BindingList<VehiclesBase> _localVehicleList;
+        private BindingList<VehiclesBase> _localVehicleList;
 
         /// <summary>
         /// Список ТС, отображаемый в "dataGridViewFoundVehicles"
@@ -304,18 +304,6 @@ namespace FuelCalculationView
             KeyPressEventArgs e)
         {
             SharedServices.CheckCount(e, textBoxVehicleWeight.Text);
-        }
-
-        /// <summary>
-        /// Сообщение об отсутствии совпадений при поиске ТС
-        /// </summary>
-        /// <param name="vehiclesList">Список совпадений</param>
-        public void EmptyListMssage(BindingList<VehiclesBase> vehiclesList)
-        {
-            if (vehiclesList.Count == 0)
-            {
-                MessageBox.Show("Совпадений не обнаружено!");
-            }
         }
     }
 }

@@ -149,9 +149,9 @@
             // 
             this.ButtonCloseFindVehicleForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ButtonCloseFindVehicleForm.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ButtonCloseFindVehicleForm.Location = new System.Drawing.Point(199, 245);
+            this.ButtonCloseFindVehicleForm.Location = new System.Drawing.Point(178, 271);
             this.ButtonCloseFindVehicleForm.Name = "ButtonCloseFindVehicleForm";
-            this.ButtonCloseFindVehicleForm.Size = new System.Drawing.Size(62, 23);
+            this.ButtonCloseFindVehicleForm.Size = new System.Drawing.Size(103, 23);
             this.ButtonCloseFindVehicleForm.TabIndex = 8;
             this.ButtonCloseFindVehicleForm.Text = "Close";
             this.ButtonCloseFindVehicleForm.UseVisualStyleBackColor = false;
@@ -162,7 +162,7 @@
             this.ButtonSearchVehicles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ButtonSearchVehicles.Location = new System.Drawing.Point(178, 200);
             this.ButtonSearchVehicles.Name = "ButtonSearchVehicles";
-            this.ButtonSearchVehicles.Size = new System.Drawing.Size(103, 23);
+            this.ButtonSearchVehicles.Size = new System.Drawing.Size(103, 49);
             this.ButtonSearchVehicles.TabIndex = 7;
             this.ButtonSearchVehicles.Text = "Search vehicles";
             this.ButtonSearchVehicles.UseVisualStyleBackColor = true;
