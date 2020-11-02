@@ -87,8 +87,8 @@ namespace FuelCalculationView
 
             if (counter != 0)
             {
-                MessageBox.Show($"Удалено строк: {counter}",
-                    "Удаление строк",
+                MessageBox.Show($"Deleted lines: {counter}",
+                    "Deleting lines",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
@@ -159,7 +159,7 @@ namespace FuelCalculationView
                 {
                     formatter.Serialize(fileStream, _totalVehicleList);
 
-                    MessageBox.Show("Файл успешно сохранён!");
+                    MessageBox.Show("File saved successfully!");
                 }
             }
         }
@@ -206,17 +206,17 @@ namespace FuelCalculationView
                             {
                                 _totalVehicleList.Add(vehicles);
                             }
-                            MessageBox.Show("Файл успешно загружен!");
+                            MessageBox.Show("File uploaded successfully!");
                         }
                     }
                     catch
                     {
-                        MessageBox.Show("Не удаётся загрузить файл!");
+                        MessageBox.Show("Unable to upload file!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Файл имел некорректный формат!");
+                    MessageBox.Show("The file was not in the correct format!");
                 }
             }
         }
@@ -278,7 +278,7 @@ namespace FuelCalculationView
                 }
             }
 
-            throw new Exception("Не найдено ТС.");
+            throw new Exception("No vehicle found.");
         }
 
         #endregion

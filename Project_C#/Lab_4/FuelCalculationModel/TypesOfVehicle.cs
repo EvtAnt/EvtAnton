@@ -37,7 +37,8 @@ namespace FuelCalculationModel
                     return typeof(Helicopter);
 
                 default:
-                    throw new ArgumentException("Передан несуществующий тип ТС!");
+                    throw new ArgumentException("A non-existent " +
+                        "vehicle type was transferred!");
             }
         }
     }

@@ -25,7 +25,7 @@ namespace FuelCalculationModel
         {
             get => _name;
             set => _name = (value != null && value.Replace(" ", "") != "")
-                ? value : throw new Exception("Имя не может быть пустым!");
+                ? value : throw new Exception("The name cannot be empty!");
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace FuelCalculationModel
         {
             get => _distance;
             set => _distance = (value >= 0) ? value :
-                throw new NegativeMeaningExeption("Расстояние");
+                throw new NegativeMeaningExeption("Distance");
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace FuelCalculationModel
         {
             get => _weight;
             set => _weight = (value >= 0) ? value :
-                throw new NegativeMeaningExeption("Масса ТС ");
+                throw new NegativeMeaningExeption("Vehicle weight");
         }
       
         /// <summary>

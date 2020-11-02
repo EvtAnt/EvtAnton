@@ -13,6 +13,6 @@ namespace FuelCalculationModel
         /// </summary>
         /// <param name="meaning">Значение, которое должно быть >= 0</param>
         public NegativeMeaningExeption(string meaning)
-            : base($"{meaning} не может иметь отрицательное значение!") { }
+            : base($"{meaning} cannot be negative!") { }
     }
 }

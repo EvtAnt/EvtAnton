@@ -56,7 +56,7 @@ namespace FuelCalculationView
                 }
                 else
                 {
-                    MessageBox.Show("Не указан тип ТС!");
+                    MessageBox.Show("Vehicle type not specified!");
                 }
             }
             catch (Exception ex)
@@ -96,8 +96,8 @@ namespace FuelCalculationView
                 }
                 default:
                 {
-                    throw new Exception("Непредвиденная ошибка " +
-                        "в методе CreateVehicleByString (default)");
+                    throw new Exception("Unexpected error in method " +
+                        "CreateVehicleByString (default)");
                 }
             }
         }
@@ -118,7 +118,7 @@ namespace FuelCalculationView
             vehicle.Weight = 
                 !string.IsNullOrEmpty(weight) 
                     ? Convert.ToDouble(weight) 
-                    : throw new ArgumentException("Ошибка: Не указана масса ТС!");
+                    : throw new ArgumentException("Error: vehicle weight not specified!");
         }
 
         /// <summary>

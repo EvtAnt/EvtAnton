@@ -49,14 +49,14 @@ namespace FuelCalculationView
 
             if (string.IsNullOrEmpty(checkStroka) || checkStroka == " ")
             {
-                throw new ArgumentException("Ошибка: не указано имя ТС!");
+                throw new ArgumentException("Error: vehicle name not specified!");
             }
             else if (checkStroka.IndexOfAny(unnecСhar) != -1 ||
                 checkStroka.IndexOf('-', 0, 1) != -1 ||
                 checkStroka.LastIndexOf('-', 0, 1) != -1)
             {
-                throw new FormatException("Использованы недопустимые " +
-                                            "символы при вводе имени ТС!");
+                throw new FormatException("Invalid characters used " +
+                    "when entering vehicle name!");
             }
 
             return checkStroka;

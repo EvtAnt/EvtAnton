@@ -58,12 +58,12 @@ namespace FuelCalculationView
                     _setVehicle.Distance = Convert.ToDouble(textBoxDistance.Text);
 
                     textBoxFuelCostText.Text = $"{_setVehicle.Type} " +
-                        $"{_setVehicle.Name} потратит " +
-                        $"{_setVehicle.FuelCost()} л. топлива.";
+                        $"{_setVehicle.Name} will spend " +
+                        $"{_setVehicle.FuelCost()} liters of fuel.";
                 }
                 else
                 {
-                    MessageBox.Show("Введите значение в поле {Расстояние, км}!");
+                    MessageBox.Show("Enter a value in the field {Distance, km}!");
                 }
             }
             catch (ArgumentOutOfRangeException ex)
