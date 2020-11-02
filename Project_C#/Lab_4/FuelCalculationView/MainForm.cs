@@ -56,14 +56,12 @@ namespace FuelCalculationView
         /// <param name="e"></param>
         private void DeleteVehicle_Click(object sender, EventArgs e)
         {
-            int counter = 0;
-            var listToRemove = new List<VehiclesBase> { };
+            int counter = dataGridViewMain.SelectedRows.Count;
+            var listToRemove = new List<VehiclesBase>();
 
             foreach (DataGridViewRow delRow
                 in dataGridViewMain.SelectedRows)
             {
-                counter++;
-
                 dataGridViewMain.Rows.Remove(delRow);
 
                 foreach (VehiclesBase vehicle in _totalVehicleList)
@@ -144,21 +142,18 @@ namespace FuelCalculationView
         /// <param name="e"></param>
         private void ButtonSaveList_Click(object sender, EventArgs e)
         {
-            var saveFileDialog = new SaveFileDialog();
-
-            saveFileDialog.Filter = "vehicles" +
-                "(*.ead)|*.ead|All files (*.*)|*.*";
-
-            saveFileDialog.AddExtension = true;
-
-            saveFileDialog.Title = "Save vehicles information";
+            var saveFileDialog = new SaveFileDialog()
+            {
+                Filter = "vehicles" +
+                         "(*.ead)|*.ead|All files (*.*)|*.*",
+                AddExtension = true,
+                Title = "Save vehicles information"
+            };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 var formatter = new BinaryFormatter();
-
                 var fileSave = saveFileDialog.FileName;
-
                 using (var fileStream = new FileStream(
                     fileSave, FileMode.OpenOrCreate))
                 {
@@ -176,13 +171,19 @@ namespace FuelCalculationView
         /// <param name="e"></param>
         private void ButtonDownloadList_Click(object sender, EventArgs e)
         {
-            var openFileDialog = new OpenFileDialog();
+            //TODO: Также как с сейвфайлдиалогом +
+            var openFileDialog = new OpenFileDialog()
+            {
+                Filter = "ead файлы (*.ead)|*.ead*",
+                RestoreDirectory = true,
+                Title = "Load vehicles information"
+            }; ;
 
-            openFileDialog.Filter = "ead файлы (*.ead)|*.ead*";
-
-            openFileDialog.RestoreDirectory = true;
-
-            openFileDialog.Title = "Load vehicles information";
+            //openFileDialog.Filter = "ead файлы (*.ead)|*.ead*";
+            //
+            //openFileDialog.RestoreDirectory = true;
+            //
+            //openFileDialog.Title = "Load vehicles information";
 
             var forbinary = new BinaryFormatter();
 
@@ -257,22 +258,6 @@ namespace FuelCalculationView
         #endregion
 
         #region Методы
-
-        // TODO: через ShowDialog() +
-        /// <summary>
-        /// Запрет на открытие нескольких одинаковых форм.
-        /// </summary>
-        /// <param name="nameSearchForm">Имя формы</param>
-        //private void SearchForReopenedForms(string nameSearchForm)
-        //{
-        //    //TODO: блокировать родительское окно
-        //    var searchForm = Application.OpenForms[nameSearchForm];
-        //
-        //    if (searchForm != null)
-        //    {
-        //        searchForm.Close();
-        //    }
-        //}
 
         /// <summary>
         /// Поиск ТС по выделенной строке

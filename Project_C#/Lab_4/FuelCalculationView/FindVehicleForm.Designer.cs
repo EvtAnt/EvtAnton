@@ -82,7 +82,7 @@
             this.groupBox1.Size = new System.Drawing.Size(288, 304);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Наеденные транспортные средства";
+            this.groupBox1.Text = "Found vehicles";
             // 
             // groupBox2
             // 
@@ -98,16 +98,16 @@
             this.groupBox2.Size = new System.Drawing.Size(166, 119);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Параметры поиска";
+            this.groupBox2.Text = "Search parameters";
             // 
             // checkBoxTypeVehicle
             // 
             this.checkBoxTypeVehicle.AutoSize = true;
             this.checkBoxTypeVehicle.Location = new System.Drawing.Point(6, 25);
             this.checkBoxTypeVehicle.Name = "checkBoxTypeVehicle";
-            this.checkBoxTypeVehicle.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxTypeVehicle.Size = new System.Drawing.Size(53, 17);
             this.checkBoxTypeVehicle.TabIndex = 9;
-            this.checkBoxTypeVehicle.Text = "Тип ТС:";
+            this.checkBoxTypeVehicle.Text = "Type:";
             this.checkBoxTypeVehicle.UseVisualStyleBackColor = true;
             // 
             // textBoxVehiclesName
@@ -130,9 +130,9 @@
             this.checkBoxNameVehicle.AutoSize = true;
             this.checkBoxNameVehicle.Location = new System.Drawing.Point(6, 57);
             this.checkBoxNameVehicle.Name = "checkBoxNameVehicle";
-            this.checkBoxNameVehicle.Size = new System.Drawing.Size(68, 17);
+            this.checkBoxNameVehicle.Size = new System.Drawing.Size(57, 17);
             this.checkBoxNameVehicle.TabIndex = 11;
-            this.checkBoxNameVehicle.Text = "Имя ТС:";
+            this.checkBoxNameVehicle.Text = "Name:";
             this.checkBoxNameVehicle.UseVisualStyleBackColor = true;
             // 
             // checkBoxWeightVehicle
@@ -140,9 +140,9 @@
             this.checkBoxWeightVehicle.AutoSize = true;
             this.checkBoxWeightVehicle.Location = new System.Drawing.Point(6, 89);
             this.checkBoxWeightVehicle.Name = "checkBoxWeightVehicle";
-            this.checkBoxWeightVehicle.Size = new System.Drawing.Size(96, 17);
+            this.checkBoxWeightVehicle.Size = new System.Drawing.Size(81, 17);
             this.checkBoxWeightVehicle.TabIndex = 10;
-            this.checkBoxWeightVehicle.Text = "Масса ТС, кг:";
+            this.checkBoxWeightVehicle.Text = "Weight, kg:";
             this.checkBoxWeightVehicle.UseVisualStyleBackColor = true;
             // 
             // ButtonCloseFindVehicleForm
@@ -175,7 +175,7 @@
             this.ClientSize = new System.Drawing.Size(312, 329);
             this.Controls.Add(this.groupBox1);
             this.Name = "FindVehicleForm";
-            this.Text = "FindVehicleForm";
+            this.Text = "Find vehicle form";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFoundVehicles)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

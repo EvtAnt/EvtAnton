@@ -41,67 +41,67 @@
             // comboBoxTypesOfVehicle
             // 
             this.comboBoxTypesOfVehicle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTypesOfVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxTypesOfVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxTypesOfVehicle.FormattingEnabled = true;
-            this.comboBoxTypesOfVehicle.Location = new System.Drawing.Point(76, 13);
+            this.comboBoxTypesOfVehicle.Location = new System.Drawing.Point(57, 13);
             this.comboBoxTypesOfVehicle.Name = "comboBoxTypesOfVehicle";
-            this.comboBoxTypesOfVehicle.Size = new System.Drawing.Size(99, 24);
+            this.comboBoxTypesOfVehicle.Size = new System.Drawing.Size(92, 21);
             this.comboBoxTypesOfVehicle.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(13, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Тип ТС:";
+            this.label1.Text = "Type:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(13, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 16);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Имя ТС:";
+            this.label2.Text = "Name:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(13, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 16);
+            this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Масса ТС, кг:";
+            this.label3.Text = "Weight, kg:";
             // 
             // textBoxNamesOfVehicle
             // 
-            this.textBoxNamesOfVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxNamesOfVehicle.Location = new System.Drawing.Point(76, 50);
+            this.textBoxNamesOfVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxNamesOfVehicle.Location = new System.Drawing.Point(57, 49);
             this.textBoxNamesOfVehicle.Name = "textBoxNamesOfVehicle";
-            this.textBoxNamesOfVehicle.Size = new System.Drawing.Size(99, 22);
+            this.textBoxNamesOfVehicle.Size = new System.Drawing.Size(92, 20);
             this.textBoxNamesOfVehicle.TabIndex = 4;
             // 
             // textBoxWeightOfVehicle
             // 
             this.textBoxWeightOfVehicle.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxWeightOfVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxWeightOfVehicle.Location = new System.Drawing.Point(111, 87);
+            this.textBoxWeightOfVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxWeightOfVehicle.Location = new System.Drawing.Point(81, 86);
             this.textBoxWeightOfVehicle.MaxLength = 8;
             this.textBoxWeightOfVehicle.Name = "textBoxWeightOfVehicle";
-            this.textBoxWeightOfVehicle.Size = new System.Drawing.Size(64, 22);
+            this.textBoxWeightOfVehicle.Size = new System.Drawing.Size(68, 20);
             this.textBoxWeightOfVehicle.TabIndex = 5;
             this.textBoxWeightOfVehicle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VehicleWeight_KeyPress);
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(16, 128);
+            this.OK.Location = new System.Drawing.Point(12, 122);
             this.OK.Name = "OK";
-            this.OK.Size = new System.Drawing.Size(75, 23);
+            this.OK.Size = new System.Drawing.Size(63, 23);
             this.OK.TabIndex = 6;
             this.OK.Text = "OK";
             this.OK.UseVisualStyleBackColor = true;
@@ -109,9 +109,9 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(100, 128);
+            this.Cancel.Location = new System.Drawing.Point(81, 122);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(75, 23);
+            this.Cancel.Size = new System.Drawing.Size(68, 23);
             this.Cancel.TabIndex = 7;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
@@ -121,7 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(193, 157);
+            this.ClientSize = new System.Drawing.Size(162, 155);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.OK);
             this.Controls.Add(this.textBoxWeightOfVehicle);
@@ -131,8 +131,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxTypesOfVehicle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "AddVehicleForm";
-            this.Text = "AddVehicleForm";
+            this.Text = "AVF";
             this.ResumeLayout(false);
             this.PerformLayout();
 

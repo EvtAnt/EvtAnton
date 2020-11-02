@@ -25,15 +25,6 @@ namespace FuelCalculationView
         {
             InitializeComponent();
 
-            //TODO: Завернуть в метод + использовать List +
-
-            // Внесение в Combobox всех типов ТС из "enum VehiclesTypes"
-            //var vehicleTypes = Enum.GetNames(typeof(VehiclesTypes));
-            //for (int i = 0; i < vehicleTypes.Length; i++)
-            //{ 
-            //    // addRange
-            //    comboBoxTypesOfVehicle.Items.Add(vehicleTypes[i]);
-            //}
             comboBoxTypesOfVehicle.Items.AddRange(Enum.GetNames(typeof(VehiclesTypes)));
                 
             _totalVehicleList = vehicleList;
@@ -81,7 +72,7 @@ namespace FuelCalculationView
         /// <param name="name">Название ТС</param>
         /// <param name="weight">Масса ТС в кг</param>
         /// <returns></returns>
-        public static VehiclesBase CreateVehicleByString(string type, string name, string weight)
+        private VehiclesBase CreateVehicleByString(string type, string name, string weight)
         {
             switch (type)
             {
@@ -118,7 +109,7 @@ namespace FuelCalculationView
         /// <param name="vehicle">Транспортное средство</param>
         /// <param name="name">Имя ТС</param>
         /// <param name="weight">Масса ТС</param>
-        private static void AddNameAndWeightVehicle(
+        private void AddNameAndWeightVehicle(
             VehiclesBase vehicle, 
             string name, 
             string weight)
@@ -145,10 +136,9 @@ namespace FuelCalculationView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        //TODO: RSDN +
         private void VehicleWeight_KeyPress(object sender, KeyPressEventArgs e)
         {
-            SharedServices.CheckCount(e);
+            SharedServices.CheckCount(e, textBoxWeightOfVehicle.Text);
         }
     }
 }

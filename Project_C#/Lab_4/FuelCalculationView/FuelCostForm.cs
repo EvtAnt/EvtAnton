@@ -72,7 +72,6 @@ namespace FuelCalculationView
             }
         }
 
-        //TODO: Дубль +
         /// <summary>
         /// Проверка введённых символов в "TextBoxDistance"
         /// </summary>
@@ -80,7 +79,7 @@ namespace FuelCalculationView
         /// <param name="e"></param>
         private void TextBoxDistance_KeyPress(object sender, KeyPressEventArgs e)
         {
-            SharedServices.CheckCount(e);
+            SharedServices.CheckCount(e, textBoxDistance.Text);
         }
     }
 }

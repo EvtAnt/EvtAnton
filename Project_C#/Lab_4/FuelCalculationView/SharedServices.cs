@@ -16,10 +16,17 @@ namespace FuelCalculationView
         /// <summary>
         /// Метод динамической обработки символов, вводимых в textBox
         /// </summary>
-        /// <param name="argument">Вводимый символ</param>
-        public static void CheckCount(KeyPressEventArgs argument)
+        /// <param name="argument">вводимый символ</param>
+        /// <param name="textBox">Текущий текст в textBox</param>
+        public static void CheckCount(KeyPressEventArgs argument, string textBox)
         {
             const int backspaceASCIICode = 8;
+
+            // Защита от дублирования точек и запятых
+            if (textBox.EndsWith(",") || textBox.EndsWith("."))
+            {
+                argument.Handled = true;
+            }
 
             if (!Char.IsDigit(argument.KeyChar) &&
                 argument.KeyChar != ',' &&

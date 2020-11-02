@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBoxVehiclesList = new System.Windows.Forms.GroupBox();
+            this.dataGridViewMain = new System.Windows.Forms.DataGridView();
             this.ButtonDownloadList = new System.Windows.Forms.Button();
             this.ButtonSaveList = new System.Windows.Forms.Button();
             this.ButtonClearList = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@
             this.ButtonFuelCost = new System.Windows.Forms.Button();
             this.ButtonDeleteVehicle = new System.Windows.Forms.Button();
             this.ButtonAddVehicle = new System.Windows.Forms.Button();
-            this.dataGridViewMain = new System.Windows.Forms.DataGridView();
             this.groupBoxVehiclesList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +61,22 @@
             this.groupBoxVehiclesList.Size = new System.Drawing.Size(284, 324);
             this.groupBoxVehiclesList.TabIndex = 0;
             this.groupBoxVehiclesList.TabStop = false;
-            this.groupBoxVehiclesList.Text = "Список транспортных средств";
+            this.groupBoxVehiclesList.Text = "Vehicles list";
+            // 
+            // dataGridViewMain
+            // 
+            this.dataGridViewMain.AllowUserToAddRows = false;
+            this.dataGridViewMain.AllowUserToDeleteRows = false;
+            this.dataGridViewMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMain.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewMain.Name = "dataGridViewMain";
+            this.dataGridViewMain.ReadOnly = true;
+            this.dataGridViewMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewMain.Size = new System.Drawing.Size(272, 178);
+            this.dataGridViewMain.TabIndex = 1;
             // 
             // ButtonDownloadList
             // 
@@ -155,21 +170,6 @@
             this.ButtonAddVehicle.UseVisualStyleBackColor = true;
             this.ButtonAddVehicle.Click += new System.EventHandler(this.AddVehicle_Click);
             // 
-            // dataGridViewMain
-            // 
-            this.dataGridViewMain.AllowUserToAddRows = false;
-            this.dataGridViewMain.AllowUserToDeleteRows = false;
-            this.dataGridViewMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMain.Location = new System.Drawing.Point(6, 19);
-            this.dataGridViewMain.Name = "dataGridViewMain";
-            this.dataGridViewMain.ReadOnly = true;
-            this.dataGridViewMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMain.Size = new System.Drawing.Size(272, 178);
-            this.dataGridViewMain.TabIndex = 1;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,7 +177,7 @@
             this.ClientSize = new System.Drawing.Size(308, 348);
             this.Controls.Add(this.groupBoxVehiclesList);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Main form";
             this.groupBoxVehiclesList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).EndInit();
             this.ResumeLayout(false);

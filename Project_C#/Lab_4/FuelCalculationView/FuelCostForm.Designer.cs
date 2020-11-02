@@ -37,9 +37,9 @@
             // 
             // ButtonCalculation
             // 
-            this.ButtonCalculation.Location = new System.Drawing.Point(12, 82);
+            this.ButtonCalculation.Location = new System.Drawing.Point(159, 6);
             this.ButtonCalculation.Name = "ButtonCalculation";
-            this.ButtonCalculation.Size = new System.Drawing.Size(75, 23);
+            this.ButtonCalculation.Size = new System.Drawing.Size(75, 43);
             this.ButtonCalculation.TabIndex = 0;
             this.ButtonCalculation.Text = "Calculation";
             this.ButtonCalculation.UseVisualStyleBackColor = true;
@@ -47,7 +47,7 @@
             // 
             // ButtonClose
             // 
-            this.ButtonClose.Location = new System.Drawing.Point(113, 82);
+            this.ButtonClose.Location = new System.Drawing.Point(159, 53);
             this.ButtonClose.Name = "ButtonClose";
             this.ButtonClose.Size = new System.Drawing.Size(75, 23);
             this.ButtonClose.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // textBoxDistance
             // 
-            this.textBoxDistance.Location = new System.Drawing.Point(125, 59);
+            this.textBoxDistance.Location = new System.Drawing.Point(90, 6);
             this.textBoxDistance.Name = "textBoxDistance";
             this.textBoxDistance.Size = new System.Drawing.Size(63, 20);
             this.textBoxDistance.TabIndex = 3;
@@ -66,36 +66,37 @@
             // textBoxFuelCostText
             // 
             this.textBoxFuelCostText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxFuelCostText.Location = new System.Drawing.Point(12, 12);
+            this.textBoxFuelCostText.Location = new System.Drawing.Point(15, 32);
             this.textBoxFuelCostText.Multiline = true;
             this.textBoxFuelCostText.Name = "textBoxFuelCostText";
             this.textBoxFuelCostText.ReadOnly = true;
-            this.textBoxFuelCostText.Size = new System.Drawing.Size(176, 44);
+            this.textBoxFuelCostText.Size = new System.Drawing.Size(138, 44);
             this.textBoxFuelCostText.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(9, 61);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 16);
+            this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Расстояние, км:";
+            this.label1.Text = "Distance, km:";
             // 
             // FuelCostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(199, 111);
+            this.ClientSize = new System.Drawing.Size(246, 87);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxFuelCostText);
             this.Controls.Add(this.textBoxDistance);
             this.Controls.Add(this.ButtonClose);
             this.Controls.Add(this.ButtonCalculation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "FuelCostForm";
-            this.Text = "FuelCostForm";
+            this.Text = "Fuel cost form";
             this.ResumeLayout(false);
             this.PerformLayout();
 
